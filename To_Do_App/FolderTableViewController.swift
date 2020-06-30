@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class FolderTableViewController: UITableViewController {
     
@@ -16,6 +17,8 @@ class FolderTableViewController: UITableViewController {
     
     // create a context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    static var archivedFolder: Folder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,30 @@ class FolderTableViewController: UITableViewController {
         } catch {
             print("Error loading folders \(error.localizedDescription)")
         }
-        
+        checkArchived()
         tableView.reloadData()
+    }
+    
+    func checkArchived()
+    {
+        var cond = true
+        for folder in folders
+        {
+            if folder.name == "Archived"
+            {
+                FolderTableViewController.archivedFolder = folder
+                cond = false
+                break
+            }
+        }
+        if cond
+        {
+            let folder = Folder(context: context)
+            folder.name = "Archived"
+            folders.append(folder)
+            FolderTableViewController.archivedFolder = folder
+            saveFolders()
+        }
     }
     
     func saveFolders() {
@@ -112,5 +137,21 @@ class FolderTableViewController: UITableViewController {
             destination.selectedFolder = folders[indexPath.row]
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadFolder()
+    }
+    
+    func setupNotification()
+    {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) {
+            (granted, error) in
+            if granted {
+                print("yes")
+            } else {
+                print("No")
+            }
+        }
     }
 }

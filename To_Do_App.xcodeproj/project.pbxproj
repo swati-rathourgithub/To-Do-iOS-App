@@ -17,6 +17,7 @@
 		B57E58CE24A655A400619588 /* To_Do_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B57E58CC24A655A400619588 /* To_Do_App.xcdatamodeld */; };
 		B57E58D024A655A500619588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57E58CF24A655A500619588 /* Assets.xcassets */; };
 		B57E58D324A655A500619588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57E58D124A655A500619588 /* LaunchScreen.storyboard */; };
+		B5B5819D24AAEC3B0016DD7F /* applelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B5819C24AAEC3B0016DD7F /* applelogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B57E58CF24A655A500619588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57E58D224A655A500619588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57E58D424A655A500619588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5B5819C24AAEC3B0016DD7F /* applelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = applelogo.png; path = ../../../Downloads/applelogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		B57E58C224A655A400619588 /* To_Do_App */ = {
 			isa = PBXGroup;
 			children = (
+				B5B5819C24AAEC3B0016DD7F /* applelogo.png */,
 				B57E58C324A655A400619588 /* AppDelegate.swift */,
 				B57E58C524A655A400619588 /* SceneDelegate.swift */,
 				B57E58C924A655A400619588 /* Main.storyboard */,
@@ -72,9 +75,9 @@
 				B57E58D424A655A500619588 /* Info.plist */,
 				B57E58CC24A655A400619588 /* To_Do_App.xcdatamodeld */,
 				B56F153724A9756300967A2A /* NoteViewController.swift */,
-				B56F153924A975FA00967A2A /* NoteTableViewController.swift */,
 				B56F153B24A9765C00967A2A /* MoveToViewController.swift */,
 				B56F153D24A976CA00967A2A /* FolderTableViewController.swift */,
+				B56F153924A975FA00967A2A /* NoteTableViewController.swift */,
 			);
 			path = To_Do_App;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B5819D24AAEC3B0016DD7F /* applelogo.png in Resources */,
 				B57E58D324A655A500619588 /* LaunchScreen.storyboard in Resources */,
 				B57E58D024A655A500619588 /* Assets.xcassets in Resources */,
 				B57E58CB24A655A400619588 /* Main.storyboard in Resources */,

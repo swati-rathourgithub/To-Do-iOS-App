@@ -19,7 +19,16 @@ class NoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if selectedNote != nil
+        {
+            titleTextField.text = selectedNote?.title
+            messageTextField.text = selectedNote?.desc
+            remindMeSwitch.isOn = selectedNote!.remindme
+            if let date = selectedNote?.due
+            {
+                dueDateDatePicker.date = date
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -27,14 +36,22 @@ class NoteViewController: UIViewController {
     @IBAction func saveClicked(_ sender: Any) {
         if let title = titleTextField.text
         {
+            let desc = messageTextField.text
+            let remindme = remindMeSwitch.isOn
+            let due = dueDateDatePicker.date
             if selectedNote == nil
             {
-                let desc = messageTextField.text
-                let remindme = remindMeSwitch.isOn
-                let due = dueDateDatePicker.date
                 delegate?.createNote(title: title, message: desc, due: due, remindme: remindme)
-                navigationController?.popViewController(animated: true)
             }
+            else
+            {
+                selectedNote?.title = title
+                selectedNote?.desc = desc
+                selectedNote?.remindme = remindme
+                selectedNote?.due = due
+                delegate?.updateNote()
+            }
+            navigationController?.popViewController(animated: true)
         }
     }
     /*
@@ -47,4 +64,9 @@ class NoteViewController: UIViewController {
     }
     */
 
+    @IBAction func completedClicked(_ sender: Any) {
+        delegate?.noteCompleted()
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
