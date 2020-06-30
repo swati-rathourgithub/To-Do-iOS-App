@@ -9,13 +9,13 @@
 import UIKit
 
 class NoteViewController: UIViewController {
-    
-    @IBOutlet weak var noteTextView: UITextView!
-    var selectedNote: Note? {
-        didSet {
-            // write code after
-        }
-    }
+
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var remindMeSwitch: UISwitch!
+    @IBOutlet weak var dueDateDatePicker: UIDatePicker!
+    var selectedNote: Note?
+    var delegate: NoteTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,19 @@ class NoteViewController: UIViewController {
     }
     
 
+    @IBAction func saveClicked(_ sender: Any) {
+        if let title = titleTextField.text
+        {
+            if selectedNote == nil
+            {
+                let desc = messageTextField.text
+                let remindme = remindMeSwitch.isOn
+                let due = dueDateDatePicker.date
+                delegate?.createNote(title: title, message: desc, due: due, remindme: remindme)
+                navigationController?.popViewController(animated: true)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -103,14 +103,41 @@ class NoteTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let nvc = segue.destination as? NoteViewController
+        {
+            nvc.delegate = self
+        }
     }
-    */
-
+    
+    func createNote(title: String, message: String?, due: Date?, remindme: Bool)
+    {
+        let note = Note(context: context)
+        note.title = title
+        note.desc = message
+        note.due = due
+        note.remindme = remindme
+        note.created = Date()
+        note.parentFolder = selectedFolder
+        notes.append(note)
+        save()
+        tableView.reloadData()
+    }
+    
+    func save()
+    {
+        do
+        {
+            try context.save()
+        }
+        catch
+        {
+            print(error)
+        }
+    }
 }
